@@ -1,6 +1,3 @@
-console.log("Hello World")
+const api = new ApiService("http://localhost:3000")
 
-fetch("http://localhost:3000/teachers")
-    .then(r => r.json())
-    .then(data => console.log(data))
-    .catch(err => console.warn(err))
+Teacher.getTeachers()

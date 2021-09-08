@@ -40,13 +40,13 @@ padding: 10px;
     background-color: honeydew;
     color: black;
     width: 25%;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 700px; /* Should be removed. Only for demonstration */
 }
 
 .map {
     background-color: white;
     width: 45%;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 700px; /* Should be removed. Only for demonstration */
 }
 
 /* Clear floats after the columns */
@@ -56,8 +56,15 @@ padding: 10px;
     clear: both;
 }
 
-@media screen and (max-width: 600px) {
+#profile-list img{
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    float: left;
+}
+
+/* @media screen and (max-width: 600px) {
     .column {
       width: 100%;
     }
-}
+} */
