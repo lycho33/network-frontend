@@ -1,9 +1,9 @@
 const api = new ApiService("http://localhost:3000")
 
 Teacher.getTeachers()
+Event.getEvents()
 
 initMap = () => {
-
     //new map
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 39.1653, lng: -86.5264},

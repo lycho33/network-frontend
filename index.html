@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="./assets/style.css">
     <script src="./services/ApiServices.js"></script>
     <script src="./components/Teacher.js"></script>
+    <script src="./components/Event.js"></script>
     <script defer src="./components/index.js"></script>
+    <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWWYIcg3m8EBYs6qPNDKG1yjT09imS2Pc&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
     <title>The Network</title>
 </head>
 <body>
@@ -28,7 +33,23 @@
       </div>
     </div>
 
-    <div id="header-links" style="background-color:#E57272;"></div>
+    <!-- <div id="header-links" style="background-color:#E57272;"> -->
+    <div id="header-links"></div>
+      <form>
+        <input type="text" name="name" value="" placeholder="Name of Event">
+        <input type="text" name="date" value="" placeholder="Date">
+        <select name="category" id="">
+          <option value="masterclass">MasterClass</option>
+          <option value="summerFestival">Summer Festival</option>
+          <option value="concert">Concert</option>
+        </select><br>
+        <input type="text" name="city" value="" placeholder="City">
+        <input type="text" name="state" value="" placeholder="State">
+        <input type="text" name="country" value="" placeholder="Country"><br>
+        <textarea type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
+        <button type="submit">Submit Event</button>
+      </form>
+    </div><br>
 
     <div class="row">
         <div class="column teachers">
@@ -47,15 +68,10 @@
           </div>
         </div>
         <div class="column events">
-          <div id="header">
-            <h2>Events:</h2>
+          <div id="eHeader">
           </div>
         </div>
     </div>
 
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWWYIcg3m8EBYs6qPNDKG1yjT09imS2Pc&callback=initMap&libraries=&v=weekly"
-      async
-  ></script>
 </body>
 </html>

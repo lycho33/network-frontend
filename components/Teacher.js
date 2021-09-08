@@ -24,31 +24,22 @@ class Teacher {
      
     }
 
-  
-
-
+    //all class functions are down here
     static renderTeachers(){
         this.all.forEach(teacher => teacher.renderProfile())
     }
 
-    static renderEvents(){
-        this.events.forEach(event => event.renderEventsIndex())
+    formDisplay = () => {
+        console.log("this works")
     }
 
     static getTeachers() {
         api.getTeachers().then(teachers => {
             teachers.forEach(teacher => new Teacher(teacher))
             this.renderTeachers()
-            // this.renderEvents()
+            
         })
     }
 
-    renderEventsIndex = () => {
-        const eventsDiv = document.querySelector(".events")
-        const eventList = document.createElement('div')
-        eventList.className = "event"
-        eventsDiv.append(eventList)
-        console.log(this.events)
-        // this.events.forEach(e => e.render())
-    }
+
 }
