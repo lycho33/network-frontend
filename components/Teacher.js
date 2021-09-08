@@ -4,8 +4,8 @@ class Teacher {
 
     constructor(data){
         this.data = data
+        this.events = this.data.events.map(event => new Event(event, this))
         this.constructor.all.push(this)
-        console.log(this)
     }
 
     renderProfile = () => {
@@ -28,6 +28,16 @@ class Teacher {
         api.getTeachers().then(teachers => {
             teachers.forEach(teacher => new Teacher(teacher))
             this.renderTeachers()
+            this.renderEventsIndex()
         })
+    }
+
+    static renderEventsIndex(){
+        const eventsDiv = document.querySelector(".events")
+        const eventList = document.createElement('div')
+        eventList.className = "event"
+        eventsDiv.append(eventList)
+        console.log(this.events)
+        this.events.forEach(e => e.render())
     }
 }

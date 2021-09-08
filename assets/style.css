@@ -49,6 +49,11 @@ padding: 10px;
     height: 700px; /* Should be removed. Only for demonstration */
 }
 
+#map {
+    height: 700px;
+    width: 45%;
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";

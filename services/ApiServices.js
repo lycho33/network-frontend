@@ -6,4 +6,5 @@ class ApiService {
 
     getTeachers = () => fetch(this.api + "/teachers").then(r => r.json())   
     
+    
 }
