@@ -71,6 +71,23 @@ padding: 10px;
     text-align: center;
     border-color: black;
     border-style: solid;
+    height: 3em;
+}
+
+#eHeader { 
+    position: relative;
+    height: 3em;
+    border-color: black;
+    border-style: solid;
+}
+
+#eHeader h2 {
+    margin: 0;
+    margin-right: -50%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #map {
