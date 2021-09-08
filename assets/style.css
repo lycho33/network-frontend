@@ -1,3 +1,63 @@
-h1 {
-    color: blue
+body {
+    box-sizing: border-box;
+    background-color: #ad3127;
+}
+
+#intro {
+    color: white;
+    text-align: center;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 10px;
+
+}
+
+.icon img {
+    width: auto;
+    height: 3.9em;
+}
+
+.icon {
+    text-align: right;
+}
+
+/* columns for the header */
+.icon, .links {
+    color: white;
+    width: 20%;
+}
+    
+.title {
+    color: white;
+    width: 55%;
+}
+
+/* columns for the main body */
+.teachers, .events {
+    background-color: honeydew;
+    color: black;
+    width: 25%;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.map {
+    background-color: white;
+    width: 45%;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
 }
