@@ -6,10 +6,8 @@ class Event {
     }
 
     render = () => {
-        const {name, date, location, furtherInfo, deadline, category} = this.data
-        document.querySelector(".event").innerHTML += `
-            <h3>${name}</h3>
-        `
+        // const {name, date, location, furtherInfo, deadline, category} = this.data
+        console.log("this works!")
     }
     
 }

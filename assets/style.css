@@ -1,6 +1,13 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     box-sizing: border-box;
     background-color: #ad3127;
+    height: 100vh;
+    width: 100vw;
 }
 
 #intro {
@@ -39,19 +46,26 @@ padding: 10px;
 .teachers, .events {
     background-color: honeydew;
     color: black;
-    width: 25%;
+    width: 24%;
     height: 700px; /* Should be removed. Only for demonstration */
+    padding: 0;
+    margin: 0;
 }
 
 .map {
     background-color: white;
-    width: 45%;
+    width: 50%;
     height: 700px; /* Should be removed. Only for demonstration */
 }
 
+#location {
+    text-align: center;
+    border-color: black;
+    border-style: solid;
+}
+
 #map {
-    height: 700px;
-    width: 45%;
+    height: 650px;
 }
 
 /* Clear floats after the columns */

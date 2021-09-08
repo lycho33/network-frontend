@@ -2,11 +2,17 @@ const api = new ApiService("http://localhost:3000")
 
 Teacher.getTeachers()
 
-function initMap(){
+initMap = () => {
 
     //new map
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+        center: {lat: 39.1653, lng: -86.5264},
+        zoom: 6,
+        mapTypeId: 'terrain'
       });
+    new google.maps.Marker({
+      position: {lat: 39.1653, lng: -86.5264},
+      map: map,
+      animation: google.maps.Animation.DROP
+    })
 }
