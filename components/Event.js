@@ -7,10 +7,37 @@ class Event {
         this.constructor.all.push(this)
     }
 
+    // static renderForm = () => {
+    //     const {name, date, city, state, country, furtherInfo, deadline, category, teacher_id} = this.data
+    //     const formDiv = document.querySelector('#header-links')
+
+    //     formDiv.innerHTML +=`
+    //         <form id="event-form">
+    //             <input type="text" name="name" value="" placeholder="Name of Event">
+    //             <input type="text" name="date" value="" placeholder="Date">
+    //             <select name="category" id="">
+    //                 <option value="masterclass">MasterClass</option>
+    //                 <option value="summerFestival">Summer Festival</option>
+    //                 <option value="concert">Concert</option>
+    //             </select>
+    //             <select name="teacher" id="">
+    //                 <option value="teahcer-name" data=${teacher_id}>${teacher_id}</option>
+    //                 <option value="teacher-name" data=${teacher_id}>${teacher_id}</option>
+    //                 <option value="teacher-name" data=${teacher_id}>${teacher_id}</option>
+    //             </select><br>
+    //             <input type="text" name="city" value="" placeholder="City">
+    //             <input type="text" name="state" value="" placeholder="State">
+    //             <input type="text" name="country" value="" placeholder="Country"><br>
+    //             <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
+    //             <button type="submit" class="submit-event">Submit Event</button>
+    //         </form>
+    //     `
+    // }
+
     renderEvent = () => {
         const {name, date, city, state, country, furtherInfo, deadline, category, teacher_id} = this.data
         const eventsDiv = document.getElementById('eventList')
-
+        
         eventsDiv.innerHTML += `
             <h3 data-id=${teacher_id}>Name: ${name}</h3>
             <h4 data-id=${teacher_id}>Date: ${date}</h4>
@@ -26,7 +53,6 @@ class Event {
             <button id="add-event-btn">Add an Event</button>`
 
         const addBtn = document.querySelector('#add-event-btn')
-        const formDiv = document.querySelector('#header-links')
         addBtn.addEventListener("click", this.display)        
     }
 
@@ -70,6 +96,7 @@ class Event {
         api.getEvents().then(events => {
             events.forEach(event => new Event(event))
             this.render()
+            // this.renderForm()
         })
     }
     

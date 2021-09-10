@@ -8,6 +8,7 @@
     <script src="./services/ApiServices.js"></script>
     <script src="./components/Teacher.js"></script>
     <script src="./components/Event.js"></script>
+    <script src="./components/Modal.js"></script>
     <script defer src="./components/index.js"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWWYIcg3m8EBYs6qPNDKG1yjT09imS2Pc&callback=initMap&libraries=&v=weekly"
       async>
@@ -34,10 +35,15 @@
 
     <!-- <div id="header-links" style="background-color:#E57272;"> -->
     <div id="header-links">
-      <form id="event-form">
+      <!-- <form id="event-form">
         <input type="text" name="name" value="" placeholder="Name of Event">
         <input type="text" name="date" value="" placeholder="Date">
         <select name="category" id="">
+          <option value="masterclass">MasterClass</option>
+          <option value="summerFestival">Summer Festival</option>
+          <option value="concert">Concert</option>
+        </select>
+        <select name="teacher" id="">
           <option value="masterclass">MasterClass</option>
           <option value="summerFestival">Summer Festival</option>
           <option value="concert">Concert</option>
@@ -47,8 +53,15 @@
         <input type="text" name="country" value="" placeholder="Country"><br>
         <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
         <button type="submit" class="submit-event">Submit Event</button>
-      </form>
+      </form> -->
     </div><br>
+
+    <div id="myModal" class="modal"> 
+      <div class="modal-content">       <!-- Modal content -->
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div>
 
     <div class="row">
         <div class="column teachers">
