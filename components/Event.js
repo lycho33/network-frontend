@@ -7,34 +7,38 @@ class Event {
         this.constructor.all.push(this)
     }
 
-    // static eventsHeader = () => {
-    //     const {name, date, city, state, country, furtherInfo, deadline, category} = this.data
-    //     const eHeader = document.getElementById("eHeader")
-    //     let h2 = document.createElement('h2')
-    //     h2.innerText = `Events: ${category}`
-    //     eHeader.appendChild(h2)
-    // }
-
     renderEvent = () => {
         const {name, date, city, state, country, furtherInfo, deadline, category} = this.data
-        const eventsDiv = document.querySelector(".events") 
-
-        // const button = document.createElement("button")
-        // button.id = "createEvent"
-        // button.innerText = "Add an Event"
-        // button.addEventListener("click", this)
-        // eventsDiv.append(button)
+        const eventsDiv = document.getElementById('eventList')
 
         eventsDiv.innerHTML += `
             <h3>Name: ${name}</h3>
             <h4>Date: ${date}</h4>
             <h4>Location: ${city}, ${state}</h4>
+            <button>Update this Event</button><br>
             <br>
         `
 
         const eHeader = document.getElementById("eHeader")
-        eHeader.innerHTML = `<h2>Event: ${category}</h2><br>`
+        eHeader.innerHTML = `
+         
+            <h2>Event: ${category}</h2><br>
+            <button id="add-event-btn">Add an Event</button>`
+
+        const addBtn = document.querySelector('#add-event-btn')
+        const formDiv = document.querySelector('#header-links')
+        addBtn.addEventListener("click", this.display)        
     }
+
+    display = () => {
+        const formDiv = document.querySelector('#header-links')
+        console.log("hello")
+        if (formDiv.style.display === 'none'){
+          return formDiv.style.display = 'block' 
+        } else {
+            return formDiv.style.display = 'none'
+        }
+      }
 
     static handleSubmit = (e) => {
         e.preventDefault()

@@ -1,6 +1,4 @@
 const api = new ApiService("http://localhost:3000")
-const addBtn = document.querySelector('#add-event-btn')
-const formDiv = document.querySelector('#header-links')
 
 Teacher.getTeachers()
 Event.getEvents()
@@ -20,12 +18,4 @@ initMap = () => {
     })
 }
 
-addBtn.addEventListener("click", () => {
-  debugger
-  if (eventForm.style.display === 'none'){
-    eventForm.style.display = 'block' 
-    } else {
-      eventForm.style.display = 'none'
-  }
 
-})
