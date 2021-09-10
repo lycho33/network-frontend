@@ -8,13 +8,13 @@ class Event {
     }
 
     renderEvent = () => {
-        const {name, date, city, state, country, furtherInfo, deadline, category} = this.data
+        const {name, date, city, state, country, furtherInfo, deadline, category, teacher_id} = this.data
         const eventsDiv = document.getElementById('eventList')
 
         eventsDiv.innerHTML += `
-            <h3>Name: ${name}</h3>
-            <h4>Date: ${date}</h4>
-            <h4>Location: ${city}, ${state}</h4>
+            <h3 data-id=${teacher_id}>Name: ${name}</h3>
+            <h4 data-id=${teacher_id}>Date: ${date}</h4>
+            <h4 data-id=${teacher_id}>Location: ${city}, ${state}</h4>
             <button>Update this Event</button><br>
             <br>
         `
@@ -32,13 +32,12 @@ class Event {
 
     display = () => {
         const formDiv = document.querySelector('#header-links')
-        console.log("hello")
         if (formDiv.style.display === 'none'){
           return formDiv.style.display = 'block' 
         } else {
             return formDiv.style.display = 'none'
         }
-      }
+    }
 
     static handleSubmit = (e) => {
         e.preventDefault()
@@ -62,7 +61,7 @@ class Event {
         eventForm.addEventListener('submit', this.handleSubmit)
     }
 
-
+    //show all events on the page
     static render = () => {
         this.all.forEach(event => event.renderEvent())
     }
