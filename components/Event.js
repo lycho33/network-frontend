@@ -53,17 +53,17 @@ class Event {
             <button id="add-event-btn">Add an Event</button>`
 
         const addBtn = document.querySelector('#add-event-btn')
-        addBtn.addEventListener("click", this.display)        
+        addBtn.addEventListener("click", modal.open)        
     }
 
-    display = () => {
-        const formDiv = document.querySelector('#header-links')
-        if (formDiv.style.display === 'none'){
-          return formDiv.style.display = 'block' 
-        } else {
-            return formDiv.style.display = 'none'
-        }
-    }
+    // display = () => {
+    //     const formDiv = document.querySelector('#header-links')
+    //     if (formDiv.style.display === 'none'){
+    //       return formDiv.style.display = 'block' 
+    //     } else {
+    //         return formDiv.style.display = 'none'
+    //     }
+    // }
 
     static handleSubmit = (e) => {
         e.preventDefault()
