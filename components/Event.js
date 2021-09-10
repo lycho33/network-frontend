@@ -36,6 +36,29 @@ class Event {
         eHeader.innerHTML = `<h2>Event: ${category}</h2><br>`
     }
 
+    static handleSubmit = (e) => {
+        e.preventDefault()
+        const newEvent = {
+            name: e.target.name.value,
+            date: e.target.date.value,
+            category: e.target.category.value,
+            city: e.target.city.value,
+            state: e.target.state.value,
+            country: e.target.country.value,
+            furtherInfo: e.target.furtherInfo.value
+        }
+        api.createEvent(newEvent).then(event => {
+            new Event(event).renderEvent()
+        })
+        e.target.reset()
+    }
+
+    static eventsForm = () => {
+        const eventForm = document.querySelector('#header-links')
+        eventForm.addEventListener('submit', this.handleSubmit)
+    }
+
+
     static render = () => {
         this.all.forEach(event => event.renderEvent())
     }

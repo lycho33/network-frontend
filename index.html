@@ -9,10 +9,9 @@
     <script src="./components/Teacher.js"></script>
     <script src="./components/Event.js"></script>
     <script defer src="./components/index.js"></script>
-    <script defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWWYIcg3m8EBYs6qPNDKG1yjT09imS2Pc&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWWYIcg3m8EBYs6qPNDKG1yjT09imS2Pc&callback=initMap&libraries=&v=weekly"
+      async>
+    </script>
     <title>The Network</title>
 </head>
 <body>
@@ -34,8 +33,8 @@
     </div>
 
     <!-- <div id="header-links" style="background-color:#E57272;"> -->
-    <div id="header-links"></div>
-      <form>
+    <div id="header-links">
+      <form id="event-form">
         <input type="text" name="name" value="" placeholder="Name of Event">
         <input type="text" name="date" value="" placeholder="Date">
         <select name="category" id="">
@@ -46,8 +45,8 @@
         <input type="text" name="city" value="" placeholder="City">
         <input type="text" name="state" value="" placeholder="State">
         <input type="text" name="country" value="" placeholder="Country"><br>
-        <textarea rows="10" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
-        <button type="submit">Submit Event</button>
+        <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
+        <button type="submit" class="submit-event">Submit Event</button>
       </form>
     </div><br>
 
@@ -70,6 +69,7 @@
         <div class="column events">
           <div id="eHeader">
           </div>
+            <button id="add-event-btn">Add an Event</button>
         </div>
     </div>
 
