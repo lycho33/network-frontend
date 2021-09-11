@@ -17,6 +17,52 @@ initMap = () => {
       map: map,
       animation: google.maps.Animation.DROP
     })
+
+    [
+      {
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "color": "#2e2929"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.school",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#d6d855"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.school",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "weight": 7.5
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "stylers": [
+          {
+            "color": "#ffffff"
+          }
+        ]
+      }
+    ]
 }
 
 

@@ -23,7 +23,7 @@ class Teacher {
 
         //fix this later! Filtered by pinned location
         const location = document.getElementById("location")
-        location.innerHTML = `<p><strong>Location: ${city}, ${state}</strong></p>`
+        location.innerHTML = `<h3><strong>Location: ${city}, ${state}</strong></h3>`
         
     }
 

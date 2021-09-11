@@ -21,7 +21,7 @@ class Event {
 
         const eHeader = document.getElementById("eHeader")
         eHeader.innerHTML = `
-            <h2>Event: ${category}</h2><br>`      
+            <h3>Event: ${category}</h3><br>`      
     }
 
     handleSubmit = (e) => {
