@@ -11,14 +11,28 @@ body {
     width: 100vw;
 }
 
+#top-half{
+    background-color: #ad3127;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 #intro {
-    /* color: white; */
-    color: black;
+    color: white;
     text-align: center;
+    position: relative;
+    width: 100%;
+    top: 0px;
+    background-color: #ad3127;
 }
 
 #header-links{
-    display: block;
+    background-color: #c47e79;
+    width: 100%;
+    display: inline-block;
+    border-color: black;
+    border-style: solid;
 }
 
 form {
@@ -28,6 +42,11 @@ form {
 
 form textarea{
     resize: none;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
 }
 
 /* Create three unequal columns that floats next to each other */
@@ -48,34 +67,40 @@ padding: 10px;
 
 /* columns for the header */
 .icon, .links {
-    /* color: white; */
-    color: black;
-    width: 20%;
+    color: white;
+    background-color: #ad3127;
+    border-color: black;
+    border-style: solid;
 }
     
 .title {
-    /* color: white; */
-    color: black;
-    width: 55%;
+    color: white;
+    display: inline-block;
 }
 
 /* columns for the main body */
-.teachers, .events {
+.row {
+    display: grid;
+    grid-template-columns: 30% 40% 29.14%;
+    margin-top: 25.5vh;
     background-color: honeydew;
+}
+
+.teachers, .events {
     color: black;
-    width: 24%;
     height: 700px; /* Should be removed. Only for demonstration */
+    padding: 0;
+    margin: 0;
+    margin-top: 0;
+}
+
+.map {
+    height: 500px; /* Should be removed. Only for demonstration */
     padding: 0;
     margin: 0;
 }
 
-.map {
-    background-color: white;
-    width: 50%;
-    height: 700px; /* Should be removed. Only for demonstration */
-}
-
-#location {
+#location{
     text-align: center;
     border-color: black;
     border-style: solid;
@@ -83,36 +108,28 @@ padding: 10px;
 }
 
 #eHeader { 
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 3em;
     border-color: black;
     border-style: solid;
 }
 
-#eHeader h2 {
-    float: left;
-    /* margin: 0;
-    margin-right: -50%;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%); */
-}
 
-#eHeader button {
-    float: right;
-}
+
+
 
 #map {
     height: 650px;
 }
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 #profile-list img{
     height: 4em;
