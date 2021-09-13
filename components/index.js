@@ -4,6 +4,7 @@ const modal = new Modal()
 Teacher.getTeachers()
 Event.getEvents()
 Event.eventsForm()
+Event.filterEvents()
 
 initMap = () => {
     //new map

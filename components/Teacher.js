@@ -48,8 +48,6 @@ class Teacher {
 
 
     //all class functions are down here
-    find = (id) => this.all.find(teacher => teacher.data.id == id)
-
     static renderTeachers(){
         this.all.forEach(teacher => teacher.renderProfile())
     }

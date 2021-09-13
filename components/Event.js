@@ -41,6 +41,8 @@ class Event {
         e.target.reset()
     }
 
+  
+
     static eventsForm = () => {
         const eventForm = document.querySelector('#header-links')
         eventForm.addEventListener('submit', this.handleSubmit)
@@ -80,6 +82,32 @@ class Event {
         modal.open()
         modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
     }
+
+    static filterEvents = () => {
+        const concertsDiv = document.getElementById('concerts')
+        const concertsBtn = document.createElement("button")
+        concertsBtn.setAttribute('id', "concertBtn")
+        concertsBtn.setAttribute('data-type', "concert")
+        concertsBtn.innerText = "Concerts"
+        concertsDiv.appendChild(concertsBtn)
+        concertsBtn.addEventListener("click", this.handleEvents)
+    }
+
+    static handleEvents = (e) => {
+        e.preventDefault()
+        debugger
+        const type = e.target.dataset.type
+        const eventsList = document.getElementById('eventList')
+        eventsList.innerHTML = ""
+        switch (type){
+            case "concert":
+                const filter = Event.all.filter(e => e.data.category == "Concert")
+                Event.iterateEvents(filter)
+            break;
+        }
+    }
+
+    
 
     static getEvents = () => {
         api.getEvents().then(events => {
