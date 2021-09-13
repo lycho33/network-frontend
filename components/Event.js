@@ -42,7 +42,7 @@ class Event {
     }
 
   
-
+    ////////CLASS Functions------------------------------------------->
     static eventsForm = () => {
         const eventForm = document.querySelector('#header-links')
         eventForm.addEventListener('submit', this.handleSubmit)
@@ -116,7 +116,8 @@ class Event {
         eventsList.innerHTML = ""
         switch (type){
             case "concert":
-                const filterC = Event.all.filter(e => e.data.category == "Concert")
+                const filterC = Event.all.filter(e => e.data.category === "Concert")
+                debugger
                 Event.iterateEvents(filterC)
             break;
             case "masterclass":
