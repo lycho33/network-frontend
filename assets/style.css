@@ -123,9 +123,25 @@ padding: 10px;
     border-style: solid;
 }
 
-/* button {
-    font-family: BentonSanBold, Helvetica, Arial, sans-serif;
-} */
+#eventList {
+    overflow: auto;
+}
+
+#concerts, #masterclass, #summer-festival{
+    display: inline-block;
+}
+
+#filters button {
+    background-color: #F08080;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    width: 13em;
+}
+
+#filters button:hover {background-color: #ffcccc}
 
 
 
