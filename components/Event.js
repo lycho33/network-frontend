@@ -95,7 +95,6 @@ class Event {
 
     static handleEvents = (e) => {
         e.preventDefault()
-        debugger
         const type = e.target.dataset.type
         const eventsList = document.getElementById('eventList')
         eventsList.innerHTML = ""
@@ -107,7 +106,10 @@ class Event {
         }
     }
 
-    
+    static iterateEvents = (event) => {
+        const eventsList = document.getElementById('eventList')
+        event.forEach(e => e.renderEvent())
+    }
 
     static getEvents = () => {
         api.getEvents().then(events => {
