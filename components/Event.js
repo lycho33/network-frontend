@@ -91,6 +91,22 @@ class Event {
         concertsBtn.innerText = "Concerts"
         concertsDiv.appendChild(concertsBtn)
         concertsBtn.addEventListener("click", this.handleEvents)
+
+        const masterclassDiv = document.getElementById('masterclass')
+        const masterclassBtn = document.createElement("button")
+        masterclassBtn.setAttribute('id', "masterclassBtn")
+        masterclassBtn.setAttribute('data-type', "masterclass")
+        masterclassBtn.innerText = "MasterClass"
+        masterclassDiv.appendChild(masterclassBtn)
+        masterclassBtn.addEventListener("click", this.handleEvents)
+        
+        const summerFestivalDiv = document.getElementById('summer-festival')
+        const summerFestivalBtn = document.createElement("button")
+        summerFestivalBtn.setAttribute('id', "summerFestivalBtn")
+        summerFestivalBtn.setAttribute('data-type', "summerFestival")
+        summerFestivalBtn.innerText = "Summer Festival"
+        summerFestivalDiv.appendChild(summerFestivalBtn)
+        summerFestivalBtn.addEventListener("click", this.handleEvents)
     }
 
     static handleEvents = (e) => {
@@ -100,9 +116,16 @@ class Event {
         eventsList.innerHTML = ""
         switch (type){
             case "concert":
-                const filter = Event.all.filter(e => e.data.category == "Concert")
-                Event.iterateEvents(filter)
+                const filterC = Event.all.filter(e => e.data.category == "Concert")
+                Event.iterateEvents(filterC)
             break;
+            case "masterclass":
+                const filterM = Event.all.filter(e => e.data.category == "MasterClass")
+                Event.iterateEvents(filterM)
+            break;
+            case "summerFestival":
+                const filterS = Event.all.filter(e => e.data.category == "Summer Festival")
+                Event.iterateEvents(filterS)
         }
     }
 
