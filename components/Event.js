@@ -68,9 +68,10 @@ class Event {
 
     static openEventForm = (e) => {
         modal.main.innerHTML = ""
-        const tv = Teacher.all.find(t => {
-            let name = t.data.name
-            let id = t.data.id
+        modal.open()
+        // const tv = Teacher.all.find(t => {
+            // let name = t.data.name
+            // let id = t.data.id
             modal.main.innerHTML += `
                 <h1 style="text-align: center">Add an Activity</h1>
                 <form class="event-form">
@@ -82,11 +83,7 @@ class Event {
                         <option value="concert">Concert</option>
                     </select>
                     
-                    <select name="teacher" id=${id}>
-                        <option value=${name}>${name}</option>
-                        <option value=${name}>${name}</option>
-                        <option value=${name}>${name}</option>
-                    </select><br>
+             
                 
                     <input type="text" name="city" value="" placeholder="City">
                     <input type="text" name="state" value="" placeholder="State">
@@ -94,8 +91,7 @@ class Event {
                     <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
                     <button type="submit" class="submit-event">Submit Event</button>
                 </form>`   
-            })
-            modal.open()
+            // })
             modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
      
     }
