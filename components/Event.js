@@ -24,7 +24,7 @@ class Event {
             <h3>Event: ${category}</h3><br>`      
     }
 
-    handleSubmit = (e) => {
+    static handleSubmit = (e) => {
         e.preventDefault()
         const newEvent = {
             name: e.target.name.value,
@@ -33,10 +33,14 @@ class Event {
             city: e.target.city.value,
             state: e.target.state.value,
             country: e.target.country.value,
-            furtherInfo: e.target.furtherInfo.value
+            furtherInfo: e.target.furtherInfo.value,
+            teacherId: e.target.teacher.id
         }
         api.createEvent(newEvent).then(event => {
-            new Event(event).renderEvent()
+            // debugger
+            const rar = new Event(event)
+            // debugger
+            rar.renderEvent()
         })
         e.target.reset()
     }
@@ -50,37 +54,50 @@ class Event {
 
     //show all events on the page
     static render = () => {
+        this.all.forEach(event => event.renderEvent())
+    }
+
+    static renderEventButton = () => {
         const formDiv = document.querySelector('.buttons')
         const addBtn = document.createElement('button')
         addBtn.setAttribute('id', 'add-event-btn')
         addBtn.innerText = "Add an Event"
         addBtn.addEventListener("click", this.openEventForm)
         formDiv.appendChild(addBtn)
-        this.all.forEach(event => event.renderEvent())
     }
 
     static openEventForm = (e) => {
-        // const teacherNames = document.querySelector("#profile-list").querySelectorAll("h3")
-        // const tv = Teacher.all.find(t => t.data.id == teacherNames.dataset.id)
-        modal.main.innerHTML += `
-            <h1 style="text-align: center">Add an Activity</h1>
-            <form class="event-form">
-                <input type="text" name="name" value="" placeholder="Name of Event">
-                <input type="text" name="date" value="" placeholder="Date">
-                <select name="category" id="">
-                    <option value="masterclass">MasterClass</option>
-                    <option value="summerFestival">Summer Festival</option>
-                    <option value="concert">Concert</option>
-                </select><br>
-            
-                <input type="text" name="city" value="" placeholder="City">
-                <input type="text" name="state" value="" placeholder="State">
-                <input type="text" name="country" value="" placeholder="Country"><br>
-                <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
-                <button type="submit" class="submit-event">Submit Event</button>
-            </form>`
-        modal.open()
-        modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
+        modal.main.innerHTML = ""
+        const tv = Teacher.all.find(t => {
+            let name = t.data.name
+            let id = t.data.id
+            modal.main.innerHTML += `
+                <h1 style="text-align: center">Add an Activity</h1>
+                <form class="event-form">
+                    <input type="text" name="name" value="" placeholder="Name of Event">
+                    <input type="text" name="date" value="" placeholder="Date">
+                    <select name="category" id="">
+                        <option value="masterclass">MasterClass</option>
+                        <option value="summerFestival">Summer Festival</option>
+                        <option value="concert">Concert</option>
+                    </select>
+                    
+                    <select name="teacher" id=${id}>
+                        <option value=${name}>${name}</option>
+                        <option value=${name}>${name}</option>
+                        <option value=${name}>${name}</option>
+                    </select><br>
+                
+                    <input type="text" name="city" value="" placeholder="City">
+                    <input type="text" name="state" value="" placeholder="State">
+                    <input type="text" name="country" value="" placeholder="Country"><br>
+                    <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
+                    <button type="submit" class="submit-event">Submit Event</button>
+                </form>`   
+            })
+            modal.open()
+            modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
+     
     }
 
     static filterEvents = () => {

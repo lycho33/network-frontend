@@ -10,8 +10,7 @@ class Teacher {
 
     renderProfile = () => {
         const {id, name, title, department, email, image, websiteUrl, biograpy, publications, category, city, state, country} = this.data
-        const profile = document.getElementById("profile-list")
-        profile.innerHTML += `
+        document.getElementById("profile-list").innerHTML += `
             <img src="${image}" alt=${name}/>
             <h3 id="teacher-name" data-id=${id} data-action="name">${name}</h3>
             <h4>Email: ${email}</h4>
@@ -48,15 +47,81 @@ class Teacher {
 
 
     //all class functions are down here
-    static renderTeachers(){
+    static handleSubmit = (e) => {
+        e.preventDefault()
+        const newTeacher = {
+            name: e.target.name.value,
+            title: e.target.title.value,
+            department: e.target.department.value,
+            email: e.target.email.value,
+            image: e.target.profilePic.value,
+            websiteUrl: e.target.url.value,
+            category: e.target.category.value,
+            city: e.target.city.value,
+            state: e.target.state.value,
+            country: e.target.country.value,
+            // id: e.target.id
+            //biography?
+        }
+        api.createTeacher(newTeacher).then(teacher => {
+            debugger
+            new Teacher(teacher).renderProfile()
+        })
+        modal.close()
+        e.target.reset()
+    }
+
+    static openTeacherForm = (e) => {
+        modal.open()
+        modal.main.innerHTML = ''
+        modal.main.innerHTML += `
+            <h1 style="text-align: center">Join the Community</h1>
+            <form class="event-form">
+                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="department" placeholder="Department">
+                <input type="email" name="email" placeholder="Email"><br><br>
+                <label for="picture">Profile Picture:</label>
+                <input type="text" name="profilePic" placeholder="URL">
+                <label for="url">Enter a link for your website:</label>
+                <input type="url" name="url" id="url" placeholder="https://example.com">
+               
+
+                <select name="category" id="">
+                    <option value="faculty">Faculty</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
+                </select><br><br>
+
+                <label for="biography">Biography:</label>
+                <textarea rows="5" cols="74" name="biography" form="usrform">Enter text here...</textarea><br><br>
+            
+                <input type="text" name="city" value="" placeholder="City">
+                <input type="text" name="state" value="" placeholder="State">
+                <input type="text" name="country" value="" placeholder="Country"><br><br>
+                <button type="submit" class="submit-event">Submit Event</button>
+            </form>`   
+
+        modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
+    }
+
+    static renderTeachers = () => {
         this.all.forEach(teacher => teacher.renderProfile())
+    }
+
+    static renderTeacherButton = () => {
+        const formDiv = document.querySelector('.buttons')
+        const addBtn = document.createElement('button')
+        addBtn.id = 'add-teacher-btn'
+        addBtn.innerText = "Add a Teacher"
+        addBtn.addEventListener("click", this.openTeacherForm)
+        formDiv.appendChild(addBtn)
     }
 
     static getTeachers() {
         api.getTeachers().then(teachers => {
             teachers.forEach(teacher => new Teacher(teacher))
             this.renderTeachers()
-            
         })
     }
 

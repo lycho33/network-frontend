@@ -2,7 +2,9 @@ const api = new ApiService("http://localhost:3000")
 const modal = new Modal()
 
 Teacher.getTeachers()
+Teacher.renderTeacherButton()
 Event.getEvents()
+Event.renderEventButton()
 Event.eventsForm()
 Event.filterEvents()
 
