@@ -8,21 +8,39 @@ class Event {
     }
 
     renderEvent = () => {
-        const {name, date, city, state, country, furtherInfo, deadline, category, teacher_id} = this.data
+        const {id, name, date, city, state, country, furtherInfo, deadline, category, teacher_id} = this.data
         const eventsDiv = document.getElementById('eventList')
         
         eventsDiv.innerHTML += `
-            <h3 data-id=${teacher_id}>Name: ${name}</h3>
-            <h4 data-id=${teacher_id}>Date: ${date}</h4>
-            <h4 data-id=${teacher_id}>Location: ${city}, ${state}</h4>
-            <button>Update this Event</button><br>
-            <br>
+            <div>
+                <h3 data-id=${this.data.teacherId}>Name: ${name}</h3>
+                <h4 data-id=${this.data.teacherId}>Date: ${date}</h4>
+                <h4 data-id=${this.data.teacherId}>Location: ${city}, ${state}</h4>
+                <button class="delete" id=${this.data.teacherId} data-id=${id}>Delete</button>
+            </div><br><br>
         `
-
         const eHeader = document.getElementById("eHeader")
-        eHeader.innerHTML = `
-            <h3>Event: ${category}</h3><br>`      
+        eHeader.innerHTML = `<h3>Event: ${category}</h3><br>`      
+
+        const deleteBtn = document.querySelectorAll('.delete')
+        deleteBtn.forEach(btn => btn.addEventListener("click", this.handleDelete))
     }
+
+    handleDelete = (e) => {
+        e.preventDefault
+        const oneEvent = {
+            div: e.target.closest('div'),
+            id: e.target.dataset.id,
+            teacherId: e.target.id,
+        }
+        api.deleteEvent(oneEvent).then(() => oneEvent.div.remove())
+   
+    }
+
+    // handleUpdate = (e) => {
+    //     e.preventDefault()
+    //     debugger
+    // }
 
     static handleSubmit = (e) => {
         e.preventDefault()
@@ -37,10 +55,7 @@ class Event {
             teacherId: e.target.teacher.id
         }
         api.createEvent(newEvent).then(event => {
-            // debugger
-            const rar = new Event(event)
-            // debugger
-            rar.renderEvent()
+            new Event(event).renderEvent()
         })
         e.target.reset()
     }
@@ -66,9 +81,13 @@ class Event {
         formDiv.appendChild(addBtn)
     }
 
+    static find = (id) => this.all.find(event => event.data.id == id)
+
     static openEventForm = (e) => {
         modal.main.innerHTML = ""
         modal.open()
+        
+        // debugger
         // const tv = Teacher.all.find(t => {
             // let name = t.data.name
             // let id = t.data.id
@@ -130,7 +149,6 @@ class Event {
         switch (type){
             case "concert":
                 const filterC = Event.all.filter(e => e.data.category === "Concert")
-                debugger
                 Event.iterateEvents(filterC)
             break;
             case "masterclass":

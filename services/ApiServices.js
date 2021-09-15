@@ -5,7 +5,7 @@ class ApiService {
     }
 
     getTeachers = () => fetch(this.api + "/teachers").then(r => r.json())   
-    getEvents = () => fetch(this.api + "/events").then(r => r.json())
+    getEvents = () => fetch(this.api + "/teachers/1/events").then(r => r.json())
 
  
     createTeacher = (newTeacher) => {
@@ -28,5 +28,14 @@ class ApiService {
             body: JSON.stringify(newEvent),
         })
         .then(r => r.json())
+    }
+
+    deleteEvent = (oneEvent) => {
+        console.log(oneEvent)
+        return fetch(`${this.api}/teachers/${oneEvent.teacherId}/events/${oneEvent.id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .catch(err => console.error(err))
     }
 }
