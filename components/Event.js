@@ -36,85 +36,8 @@ class Event {
         api.deleteEvent(oneEvent).then(() => oneEvent.div.remove())
    
     }
-
-    // handleUpdate = (e) => {
-    //     e.preventDefault()
-    //     debugger
-    // }
-
-    static handleSubmit = (e) => {
-        e.preventDefault()
-        const newEvent = {
-            name: e.target.name.value,
-            date: e.target.date.value,
-            category: e.target.category.value,
-            city: e.target.city.value,
-            state: e.target.state.value,
-            country: e.target.country.value,
-            furtherInfo: e.target.furtherInfo.value,
-            teacherId: e.target.teacher.id
-        }
-        api.createEvent(newEvent).then(event => {
-            new Event(event).renderEvent()
-        })
-        e.target.reset()
-    }
-
-  
-    ////////CLASS Functions------------------------------------------->
-    static eventsForm = () => {
-        const eventForm = document.querySelector('#header-links')
-        eventForm.addEventListener('submit', this.handleSubmit)
-    }
-
-    //show all events on the page
-    static render = () => {
-        this.all.forEach(event => event.renderEvent())
-    }
-
-    static renderEventButton = () => {
-        const formDiv = document.querySelector('.buttons')
-        const addBtn = document.createElement('button')
-        addBtn.setAttribute('id', 'add-event-btn')
-        addBtn.innerText = "Add an Event"
-        addBtn.addEventListener("click", this.openEventForm)
-        formDiv.appendChild(addBtn)
-    }
-
-    static find = (id) => this.all.find(event => event.data.id == id)
-
-    static openEventForm = (e) => {
-        modal.main.innerHTML = ""
-        modal.open()
-        
-        // debugger
-        // const tv = Teacher.all.find(t => {
-            // let name = t.data.name
-            // let id = t.data.id
-            modal.main.innerHTML += `
-                <h1 style="text-align: center">Add an Activity</h1>
-                <form class="event-form">
-                    <input type="text" name="name" value="" placeholder="Name of Event">
-                    <input type="text" name="date" value="" placeholder="Date">
-                    <select name="category" id="">
-                        <option value="masterclass">MasterClass</option>
-                        <option value="summerFestival">Summer Festival</option>
-                        <option value="concert">Concert</option>
-                    </select>
-                    
-             
-                
-                    <input type="text" name="city" value="" placeholder="City">
-                    <input type="text" name="state" value="" placeholder="State">
-                    <input type="text" name="country" value="" placeholder="Country"><br>
-                    <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
-                    <button type="submit" class="submit-event">Submit Event</button>
-                </form>`   
-            // })
-            modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
-     
-    }
-
+    
+    //-------------FILTER--------------------------------------------->\
     static filterEvents = () => {
         const concertsDiv = document.getElementById('concerts')
         const concertsBtn = document.createElement("button")
@@ -140,7 +63,6 @@ class Event {
         summerFestivalDiv.appendChild(summerFestivalBtn)
         summerFestivalBtn.addEventListener("click", this.handleEvents)
     }
-
     static handleEvents = (e) => {
         e.preventDefault()
         const type = e.target.dataset.type
@@ -161,14 +83,86 @@ class Event {
         }
     }
 
+    //--------------MODAL EVENTS-------------------------------------->
+    static renderEventButton = () => {
+        const formDiv = document.querySelector('.buttons')
+        const addBtn = document.createElement('button')
+        addBtn.setAttribute('id', 'add-event-btn')
+        addBtn.innerText = "Add an Event"
+        addBtn.addEventListener("click", this.openEventForm)
+        formDiv.appendChild(addBtn)
+    }
+    static find = (id) => this.all.find(event => event.data.id == id)
+    static openEventForm = (e) => {
+        modal.main.innerHTML = ""
+        modal.open()
+        
+        // debugger
+        // const tv = Teacher.all.find(t => {
+            // let name = t.data.name
+            // let id = t.data.id
+            modal.main.innerHTML += `
+                <h1 style="text-align: center">Add an Activity</h1>
+                <form class="event-form">
+                    <input type="text" name="name" value="" placeholder="Name of Event">
+                    <input type="text" name="date" value="" placeholder="Date">
+                    <select name="category" id="">
+                        <option value="masterclass">MasterClass</option>
+                        <option value="summerFestival">Summer Festival</option>
+                        <option value="concert">Concert</option>
+                    </select>
+                    
+
+             //iterate through Teacher.all 
+                
+                    <input type="text" name="city" value="" placeholder="City">
+                    <input type="text" name="state" value="" placeholder="State">
+                    <input type="text" name="country" value="" placeholder="Country"><br>
+                    <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
+                    <button type="submit" class="submit-event">Submit Event</button>
+                </form>`   
+            // })
+            modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
+    }
+    
+  
+    //---------------------------------------------->
+    static eventsForm = () => {
+        const eventForm = document.querySelector('#header-links')
+        eventForm.addEventListener('submit', this.handleSubmit)
+    }
+    static handleSubmit = (e) => {
+        e.preventDefault()
+        const newEvent = {
+            name: e.target.name.value,
+            date: e.target.date.value,
+            category: e.target.category.value,
+            city: e.target.city.value,
+            state: e.target.state.value,
+            country: e.target.country.value,
+            furtherInfo: e.target.furtherInfo.value,
+            teacherId: e.target.teacher.id
+        }
+        api.createEvent(newEvent).then(event => {
+            new Event(event).renderEvent()
+        })
+        e.target.reset()
+    }
+    static render = () => {
+        this.all.forEach(event => event.renderEvent())
+    }
     static iterateEvents = (event) => {
         const eventsList = document.getElementById('eventList')
         event.forEach(e => e.renderEvent())
     }
-
     static getEvents = () => {
         api.getEvents().then(events => {
-            events.forEach(event => new Event(event))
+            events.map(event => {
+                const e = new Event(event)
+                Event.all.push(e)
+            })
+            //map -> store into Event.all
+            //we're calling Event twice and that's why it's not working
             this.render()
         })
     }

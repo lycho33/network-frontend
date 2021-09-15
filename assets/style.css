@@ -140,6 +140,10 @@ padding: 10px;
     height: 100%;
 }
 
+.buttons {
+    position: relative;
+}
+
 #concerts, #masterclass, #summer-festival{
     display: inline-block;
 }
@@ -173,7 +177,7 @@ padding: 10px;
 } */
 
 #profile-list img{
-    height: 4em;
+    /* height: 4em; */
     width: 4em;
     border-radius: 50%;
     float: left;

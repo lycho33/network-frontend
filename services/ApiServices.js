@@ -9,12 +9,25 @@ class ApiService {
 
  
     createTeacher = (newTeacher) => {
+        debugger
         return fetch (`${this.api}/teachers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newTeacher),
+            body: JSON.stringify({
+                id: newTeacher.id,
+                name: newTeacher.name,
+                title: newTeacher.title,
+                department: newTeacher.department,
+                email: newTeacher.email,
+                image: newTeacher.image,
+                websiteUrl: newTeacher.websiteUrl,
+                category: newTeacher.category,
+                city: newTeacher.city,
+                state: newTeacher.state,
+                country: newTeacher.country,
+            }),
         })
         .then(r => r.json())
     }

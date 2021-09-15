@@ -42,7 +42,7 @@ class Teacher {
     }
 
     getEvents = () => {
-        this.events.forEach(event => event.renderEvent())
+        this.events.map(event => event.renderEvent())
     }
 
 
@@ -54,8 +54,8 @@ class Teacher {
             title: e.target.title.value,
             department: e.target.department.value,
             email: e.target.email.value,
-            image: e.target.profilePic.value,
             websiteUrl: e.target.url.value,
+            image: e.target.profilePic.value,
             category: e.target.category.value,
             city: e.target.city.value,
             state: e.target.state.value,
@@ -84,7 +84,7 @@ class Teacher {
                 <label for="picture">Profile Picture:</label>
                 <input type="text" name="profilePic" placeholder="URL">
                 <label for="url">Enter a link for your website:</label>
-                <input type="url" name="url" id="url" placeholder="https://example.com">
+                <input type="text" name="url" id="url" placeholder="https://example.com">
                
 
                 <select name="category" id="">
