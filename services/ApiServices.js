@@ -9,7 +9,6 @@ class ApiService {
 
  
     createTeacher = (newTeacher) => {
-        debugger
         return fetch (`${this.api}/teachers`, {
             method: 'POST',
             headers: {
@@ -22,7 +21,7 @@ class ApiService {
                 department: newTeacher.department,
                 email: newTeacher.email,
                 image: newTeacher.image,
-                websiteUrl: newTeacher.websiteUrl,
+                website_url: newTeacher.website_url,
                 category: newTeacher.category,
                 city: newTeacher.city,
                 state: newTeacher.state,

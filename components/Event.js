@@ -37,7 +37,7 @@ class Event {
    
     }
     
-    //-------------FILTER--------------------------------------------->\
+    //-------------FILTER Events--------------------------------------------->
     static filterEvents = () => {
         const concertsDiv = document.getElementById('concerts')
         const concertsBtn = document.createElement("button")
@@ -112,8 +112,10 @@ class Event {
                         <option value="concert">Concert</option>
                     </select>
                     
-
              //iterate through Teacher.all 
+                <select name="category" id="">
+                  
+                </select>
                 
                     <input type="text" name="city" value="" placeholder="City">
                     <input type="text" name="state" value="" placeholder="State">

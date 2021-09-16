@@ -23,7 +23,6 @@ class Teacher {
         //fix this later! Filtered by pinned location
         const location = document.getElementById("location")
         location.innerHTML = `<h3><strong>Location: ${city}, ${state}</strong></h3>`
-        
     }
 
     teacherEvents = (e) => {
@@ -54,13 +53,12 @@ class Teacher {
             title: e.target.title.value,
             department: e.target.department.value,
             email: e.target.email.value,
-            websiteUrl: e.target.url.value,
+            website_url: e.target.url.value,
             image: e.target.profilePic.value,
             category: e.target.category.value,
             city: e.target.city.value,
             state: e.target.state.value,
             country: e.target.country.value,
-            // id: e.target.id
             //biography?
         }
         api.createTeacher(newTeacher).then(teacher => {
@@ -84,10 +82,10 @@ class Teacher {
                 <label for="picture">Profile Picture:</label>
                 <input type="text" name="profilePic" placeholder="URL">
                 <label for="url">Enter a link for your website:</label>
-                <input type="text" name="url" id="url" placeholder="https://example.com">
+                <input type="text" name="url" placeholder="https://example.com">
                
 
-                <select name="category" id="">
+                <select name="category">
                     <option value="faculty">Faculty</option>
                     <option value="teacher">Teacher</option>
                     <option value="student">Student</option>
