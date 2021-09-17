@@ -13,11 +13,11 @@ class Event {
         
         eventsDiv.innerHTML += `
             <div>
-                <h3 data-id=${this.data.teacherId}>Name: ${name}</h3>
+                <br><h4 data-id=${this.data.teacherId}>Name: <span style="font-size: 1.1vw; margin-left: 0.3vw">${name}</span></h4>
                 <h4 data-id=${this.data.teacherId}>Date: ${date}</h4>
                 <h4 data-id=${this.data.teacherId}>Location: ${city}, ${state}</h4>
                 <button class="delete" id=${this.data.teacherId} data-id=${id}>Delete</button>
-            </div><br>
+            </div><br><br><br>
         `
         const eHeader = document.getElementById("eHeader")
         eHeader.innerHTML = `<h3>Event: ${category}</h3><br>`      

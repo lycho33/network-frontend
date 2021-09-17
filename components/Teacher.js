@@ -11,11 +11,11 @@ class Teacher {
     renderProfile = () => {
         const {id, name, title, department, email, image, websiteUrl, biograpy, publications, category, city, state, country} = this.data
         document.getElementById("profile-list").innerHTML += `
-            <img src="${image}" alt=${name}/>
-            <h3 id="teacher-name" data-id=${id} data-action="name">${name}</h3>
+            <br><br><img src="${image}" alt=${name}/>
+            <h3 id="teacher-name" data-id=${id} data-action="name"><span style="font-size: 1.2vw">${name}</span></h3>
             <h4>Email: ${email}</h4>
             <h4>Website: <a href="${websiteUrl}">${websiteUrl}</a></h4>
-            <br><br>
+            <br><br><br><br><br><br>
         `
         const teacherId = document.querySelectorAll('#teacher-name')
         // teacherId.forEach(id => id.addEventListener('click', this.teacherEvents))

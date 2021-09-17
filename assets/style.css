@@ -30,14 +30,17 @@ body {
 }
 
 #header-links{
-    /* background-image: linear-gradient(#811f0e, #900); */
     background-color: rgb(161, 1, 1);
     color: white;
     width: 100%;
     display: inline-block;
-    /* border-color: black;
-    border-style: solid; */
 }
+
+#teacher, #school-tour, #meet-teachers, #academy {
+    float: left;
+    width: 25%;
+    text-align: center;
+} 
 
 form {
     margin: auto;
@@ -57,12 +60,12 @@ form textarea{
 .column {
 float: left;
 padding: 10px;
-
+padding-top: 1vw;
 }
 
 .icon img {
     width: auto;
-    height: 3.9em;
+    height: 7em;
 }
 
 .icon {
@@ -118,7 +121,8 @@ padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(184, 221, 245);
+    background-color: #ac3e3e;
+    color: white;
     height: 3em;
 }
 
@@ -136,7 +140,8 @@ padding: 10px;
     justify-content: center;
     align-items: center;
     height: 3em;
-    background-color: #ffcccc;
+    background-color: #ac3e3e;
+    color: white;
 }
 
 #eventList {
@@ -148,18 +153,26 @@ padding: 10px;
     position: relative;
 }
 
+.buttons button{
+    background-color: #ac3e3e;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: solid;
+}
+
 #concerts, #masterclass, #summer-festival{
     display: inline-block;
 }
 
 #filters button {
-    background-color: #F08080;
+    background-color: #ac3e3e;
     border: none;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    width: 13em;
+    padding: 1px 7px;
+    height: 2.4vw;
+    font-size: 1vw;
+    font-family: 'El Messiri', sans-serif;
 }
 
 #filters button:hover {
@@ -182,18 +195,27 @@ padding: 10px;
 
 #profile-list img{
     width: 4em;
-    border-radius: 8px;
-    float: left;
+    border-radius: 60%;
+    display: inline-block;
+    vertical-align: top;
+    /* display: block; */
+}
+
+#profile-list #teacher-name {
+    display: inline-block;
+    margin-left: 1vh;
 }
 
 #profile-list{
     margin-left: 3vw;
     height: 100%;
     overflow: auto;
+    line-height: 40%;
 }
 
 #eventList{
     margin-left: 5vw;
+    line-height: 40%;
 }
 
 /* @media screen and (max-width: 600px) {
@@ -201,6 +223,8 @@ padding: 10px;
       width: 100%;
     }
 } */
+
+
 
 
 /* https://www.w3schools.com/howto/howto_css_modals.asp */
