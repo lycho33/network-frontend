@@ -4,7 +4,7 @@ class Teacher {
 
     constructor(data){
         this.data = data
-        this.events = this.data.events.map(event => new Event(event, this))
+        // this.events = this.data.events.map(event => new Event(event, this))
         this.constructor.all.push(this)
     }
 
@@ -18,7 +18,7 @@ class Teacher {
             <br><br>
         `
         const teacherId = document.querySelectorAll('#teacher-name')
-        teacherId.forEach(id => id.addEventListener('click', this.teacherEvents))
+        // teacherId.forEach(id => id.addEventListener('click', this.teacherEvents))
 
         //fix this later! Filtered by pinned location
         const location = document.getElementById("location")
@@ -31,8 +31,8 @@ class Teacher {
         const teacherAction = e.target.dataset.action
         const eventsDiv = document.getElementById('eventList')
         if (teacherAction === 'name'){
-            // this.find(teacherId).getEvents()
             const t = Teacher.all.find(t => t.data.id == id)
+            const e = Event.getEvents()
             if (eventsDiv){
                 eventsDiv.innerHTML = ""
             }

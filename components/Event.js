@@ -17,7 +17,7 @@ class Event {
                 <h4 data-id=${this.data.teacherId}>Date: ${date}</h4>
                 <h4 data-id=${this.data.teacherId}>Location: ${city}, ${state}</h4>
                 <button class="delete" id=${this.data.teacherId} data-id=${id}>Delete</button>
-            </div><br><br>
+            </div><br>
         `
         const eHeader = document.getElementById("eHeader")
         eHeader.innerHTML = `<h3>Event: ${category}</h3><br>`      
@@ -159,10 +159,7 @@ class Event {
     }
     static getEvents = () => {
         api.getEvents().then(events => {
-            events.map(event => {
-                const e = new Event(event)
-                Event.all.push(e)
-            })
+            events.map(event => new Event(event))
             //map -> store into Event.all
             //we're calling Event twice and that's why it's not working
             this.render()
