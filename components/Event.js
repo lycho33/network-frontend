@@ -96,11 +96,6 @@ class Event {
     static openEventForm = (e) => {
         modal.main.innerHTML = ""
         modal.open()
-        
-        // debugger
-        // const tv = Teacher.all.find(t => {
-            // let name = t.data.name
-            // let id = t.data.id
             modal.main.innerHTML += `
                 <h1 style="text-align: center">Add an Activity</h1>
                 <form class="event-form">
@@ -112,8 +107,7 @@ class Event {
                         <option value="concert">Concert</option>
                     </select>
                     
-             //iterate through Teacher.all 
-                <select name="category" id="">
+                <select name="teachers" id="teachers">
                   
                 </select>
                 
@@ -123,7 +117,12 @@ class Event {
                     <textarea rows="5" cols="74" type="text" name="furtherInfo" value="" placeholder="Enter any necessary information about the event"></textarea><br>
                     <button type="submit" class="submit-event">Submit Event</button>
                 </form>`   
-            // })
+            Teacher.all.map(t => {
+                let name = t.data.name
+                let id = t.data.id
+                const teachers = document.querySelector(".event-form").querySelector("#teachers")
+                teachers.innerHTML += `<option value=${id}>${name}</option>`
+            })
             modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
     }
     
@@ -142,8 +141,8 @@ class Event {
             city: e.target.city.value,
             state: e.target.state.value,
             country: e.target.country.value,
-            furtherInfo: e.target.furtherInfo.value,
-            teacherId: e.target.teacher.id
+            further_info: e.target.furtherInfo.value,
+            teacher_id: e.target.teachers.value
         }
         api.createEvent(newEvent).then(event => {
             new Event(event).renderEvent()

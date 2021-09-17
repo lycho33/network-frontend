@@ -32,7 +32,7 @@ class ApiService {
     }
 
     createEvent = (newEvent) => {
-        return fetch (`${this.api}/teachers/${newEvent.teacherId}`, {
+        return fetch (`${this.api}/teachers/${newEvent.teacher_id}/events`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,6 +48,5 @@ class ApiService {
             method: 'DELETE'
         })
         .then(res => res.json())
-        .catch(err => console.error(err))
     }
 }

@@ -25,6 +25,7 @@ class Teacher {
         location.innerHTML = `<h3><strong>Location: ${city}, ${state}</strong></h3>`
     }
 
+    //########################Filter teacher's events################################
     teacherEvents = (e) => {
         e.preventDefault()
         const id = e.target.dataset.id
@@ -39,36 +40,20 @@ class Teacher {
             t.getEvents()
         }
     }
-
     getEvents = () => {
         this.events.map(event => event.renderEvent())
     }
 
 
-    //all class functions are down here
-    static handleSubmit = (e) => {
-        e.preventDefault()
-        const newTeacher = {
-            name: e.target.name.value,
-            title: e.target.title.value,
-            department: e.target.department.value,
-            email: e.target.email.value,
-            website_url: e.target.url.value,
-            image: e.target.profilePic.value,
-            category: e.target.category.value,
-            city: e.target.city.value,
-            state: e.target.state.value,
-            country: e.target.country.value,
-            //biography?
-        }
-        api.createTeacher(newTeacher).then(teacher => {
-            debugger
-            new Teacher(teacher).renderProfile()
-        })
-        modal.close()
-        e.target.reset()
+    //#################MODAL FORM#####################################
+    static renderTeacherButton = () => {
+        const formDiv = document.querySelector('.buttons')
+        const addBtn = document.createElement('button')
+        addBtn.id = 'add-teacher-btn'
+        addBtn.innerText = "Add a Teacher"
+        addBtn.addEventListener("click", this.openTeacherForm)
+        formDiv.appendChild(addBtn)
     }
-
     static openTeacherForm = (e) => {
         modal.open()
         modal.main.innerHTML = ''
@@ -102,20 +87,33 @@ class Teacher {
 
         modal.main.getElementsByClassName("event-form")[0].addEventListener("submit", this.handleSubmit) //??? why does this work for a local function?
     }
+    static handleSubmit = (e) => {
+        e.preventDefault()
+        const newTeacher = {
+            name: e.target.name.value,
+            title: e.target.title.value,
+            department: e.target.department.value,
+            email: e.target.email.value,
+            website_url: e.target.url.value,
+            image: e.target.profilePic.value,
+            category: e.target.category.value,
+            city: e.target.city.value,
+            state: e.target.state.value,
+            country: e.target.country.value,
+            //biography?
+        }
+        api.createTeacher(newTeacher).then(teacher => {
+            debugger
+            new Teacher(teacher).renderProfile()
+        })
+        modal.close()
+        e.target.reset()
+    }
 
+    //######################Render Events################################
     static renderTeachers = () => {
         this.all.forEach(teacher => teacher.renderProfile())
     }
-
-    static renderTeacherButton = () => {
-        const formDiv = document.querySelector('.buttons')
-        const addBtn = document.createElement('button')
-        addBtn.id = 'add-teacher-btn'
-        addBtn.innerText = "Add a Teacher"
-        addBtn.addEventListener("click", this.openTeacherForm)
-        formDiv.appendChild(addBtn)
-    }
-
     static getTeachers() {
         api.getTeachers().then(teachers => {
             teachers.forEach(teacher => new Teacher(teacher))
