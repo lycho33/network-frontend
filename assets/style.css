@@ -36,6 +36,11 @@ body {
     display: inline-block;
 }
 
+#header-links a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 #teacher, #school-tour, #meet-teachers, #academy {
     float: left;
     width: 25%;
@@ -54,7 +59,16 @@ form textarea{
 #header {
     display: grid;
     grid-template-columns: 20% 50% 30%;
+ 
 }
+
+/* .icon, .title, .links{
+    background-image: url('./img/campus.jpg');
+    opacity: 0.3;
+    filter: grayscale(80%);
+    background-image: no-repeat;
+    background-size: cover;
+} */
 
 /* Create three unequal columns that floats next to each other */
 .column {
@@ -108,9 +122,16 @@ padding-top: 1vw;
     margin: 0;
 }
 
-.map img {
+/* .map img {
     width: auto;
     height: 2em;
+} */
+
+.map img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 /* .map form {

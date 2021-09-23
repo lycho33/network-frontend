@@ -27,14 +27,13 @@ class Event {
     }
 
     handleDelete = (e) => {
-        e.preventDefault
+        e.preventDefault()
         const oneEvent = {
             div: e.target.closest('div'),
             id: e.target.dataset.id,
             teacherId: e.target.id,
         }
         api.deleteEvent(oneEvent).then(() => oneEvent.div.remove())
-   
     }
     
     //-------------FILTER Events--------------------------------------------->
@@ -127,7 +126,7 @@ class Event {
     }
     
   
-    //---------------------------------------------->
+    //-----------------Events Form----------------------------->
     static eventsForm = () => {
         const eventForm = document.querySelector('#header-links')
         eventForm.addEventListener('submit', this.handleSubmit)
@@ -149,6 +148,8 @@ class Event {
         })
         e.target.reset()
     }
+
+    //-----------------------Get Events -------------------->
     static render = () => {
         this.all.forEach(event => event.renderEvent())
     }
@@ -159,8 +160,6 @@ class Event {
     static getEvents = () => {
         api.getEvents().then(events => {
             events.map(event => new Event(event))
-            //map -> store into Event.all
-            //we're calling Event twice and that's why it's not working
             this.render()
         })
     }

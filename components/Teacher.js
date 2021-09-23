@@ -4,7 +4,6 @@ class Teacher {
 
     constructor(data){
         this.data = data
-        // this.events = this.data.events.map(event => new Event(event, this))
         this.constructor.all.push(this)
     }
 
@@ -24,26 +23,6 @@ class Teacher {
         const location = document.getElementById("location")
         location.innerHTML = `<h3><strong>Location: ${city}, ${state}</strong></h3>`
     }
-
-    //########################Filter teacher's events################################
-    teacherEvents = (e) => {
-        e.preventDefault()
-        const id = e.target.dataset.id
-        const teacherAction = e.target.dataset.action
-        const eventsDiv = document.getElementById('eventList')
-        if (teacherAction === 'name'){
-            const t = Teacher.all.find(t => t.data.id == id)
-            const e = Event.getEvents()
-            if (eventsDiv){
-                eventsDiv.innerHTML = ""
-            }
-            t.getEvents()
-        }
-    }
-    getEvents = () => {
-        this.events.map(event => event.renderEvent())
-    }
-
 
     //#################MODAL FORM#####################################
     static renderTeacherButton = () => {
@@ -100,10 +79,8 @@ class Teacher {
             city: e.target.city.value,
             state: e.target.state.value,
             country: e.target.country.value,
-            //biography?
         }
         api.createTeacher(newTeacher).then(teacher => {
-            debugger
             new Teacher(teacher).renderProfile()
         })
         modal.close()

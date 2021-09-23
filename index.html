@@ -14,9 +14,7 @@
     <script src="./components/Event.js"></script>
     <script src="./components/Modal.js"></script>
     <script defer src="./components/index.js"></script>
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Xu1EFasPPVmi1S2Dwh4tBklXzWPTPJs&callback=initMap&libraries=&v=weekly"
-      async>
-    </script>
+    
     <title>The Network</title>
 </head>
 <body>
@@ -30,22 +28,15 @@
         <img src="./assets/img/network_icon.png" alt="">
       </div>
       <div class="column title">
-        <h1>The Network</h1>
+        <a href="./index.html" style="text-decoration: none;"><h1>The Network</h1></a>
       </div>
       <div class="column links">
         <h2>LiveMusic! | Contact</h2>
       </div>
     </div>
 
-    <div id="header-links">
-      <div id="teacher"><h3>Teachers</h3></div>
-      <div id="school-tour"><h3>School Tour</h3></div>
-      <div id="meet-teachers"><h3>Meet Teachers</h3></div>
-      <div id="academy"><h3>Academy</h3></div>
-    </div><br>
-  </div>
+    <div id="header-links"></div>
 
-  
     <div id="myModal" class="modal"> 
       <div class="modal-content">       <!-- Modal content -->
         <span class="close">&times;</span>
@@ -61,14 +52,9 @@
           <div id="profile-list"></div>
         </div>
         <div class="column map">
-          <div>
-            <!-- <form action="search">
-              <img src="./assets/img/search_icon.png" alt="">
-              <input type="text" name="location" placeholder="Type a Location">
-              <button></button>
-            </form><br> -->
+          <div id="map">
+            <img src="./assets/img/map.webp" alt="">
           </div>
-          <div id="map"></div>
           <div id="filters">
             <div id="concerts"></div>
             <div id="masterclass"></div>
