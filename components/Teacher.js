@@ -17,9 +17,6 @@ class Teacher {
             <br><br><br><br><br><br>
         `
         const teacherId = document.querySelectorAll('#teacher-name')
-        // teacherId.forEach(id => id.addEventListener('click', this.teacherEvents))
-
-        //fix this later! Filtered by pinned location
         const location = document.getElementById("location")
         location.innerHTML = `<h3><strong>Location: ${city}, ${state}</strong></h3>`
     }

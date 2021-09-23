@@ -31,24 +31,23 @@ class ApiService {
         .then(r => r.json())
     }
 
-    createEvent = (newEvent) => { //taking two arguments (url and newEvent object) difference is # of arguments
+    createEvent = (newEvent) => { 
         return fetch (`${this.api}/teachers/${newEvent.teacher_id}/events`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newEvent), //turns it into a string 
+            body: JSON.stringify(newEvent), 
         })
         .then(r => r.json())
     }
 
     deleteEvent = (oneEvent) => {
-        console.log(oneEvent) //return asynch network request
+        console.log(oneEvent)
         return fetch(`${this.api}/teachers/${oneEvent.teacherId}/events/${oneEvent.id}`, {
             method: 'DELETE'
         })
-        // .then(res => res.json()) //promises to return a responses once it can 
-        .then(data => console.log(data)) //pass into the callback function
+        .then(data => console.log(data)) 
     }
 
 
